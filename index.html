@@ -368,12 +368,13 @@ footer a{color:var(--t2)}
 /* ---- B: 整页按预览 B 重做（只影响 B 主题）----
    老顶栏隐藏；左侧导航只剩 8 行章节（带圈数字 + 章名 + 5 条），不展开条目；
    hero 移进主内容列，搜索 + 等级筛选放在 hero 下方；章节头带圈数字；卡片去阴影。 */
-/* ---- B: 顶栏恢复，但按 B 的极简审美重做：白底、细线、矮条、小字 ----
+/* ---- B: 顶栏恢复，但按 B 的极简审美重做：白底、细线、小字 ----
    之前整条隐藏导致 B 下无法切换主题/跳转/筛选；现在恢复同一条 .bar，
-   只在 B 下收窄、去装饰。顶栏里已有跳转下拉、全部/只看 A 级/只看说人话、
+   只在 B 下收窄、去装饰。高度与 A/C 一致：56px（与基础 .bar 的 min-height 相同），
+   不再用 48px 矮条。顶栏里已有跳转下拉、全部/只看 A 级/只看说人话、
    搜索框、计数和主题切换；B/C 级按钮只在 B 下显示（见 .f-bc）。 */
 [data-theme="b"] .bar{display:flex;background:#fff;border-bottom:1px solid var(--divider-soft);
-  padding:6px 20px;min-height:48px;gap:8px}
+  padding:0 20px;min-height:56px;gap:8px}
 [data-theme="b"] .bar h1{font-family:var(--font);font-size:14px;font-weight:650;letter-spacing:-.01em}
 [data-theme="b"] .bar h1 small{display:none}
 [data-theme="b"] .bar .jump{display:block;height:32px}
