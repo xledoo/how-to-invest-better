@@ -8,7 +8,7 @@
 - 说人话：去年第一名，不等于今年还能拿第一。
 - 收益：改掉追涨习惯后，选基金的依据更稳，不容易在高点反复换来换去。
 - 证据等级：A
-- 来源：SPIVA 报告，标普道琼斯指数公司，https://www.spglobal.com/spdji/en/spiva/ ；美国证券交易委员会投资者教育，https://www.investor.gov
+- 来源：S&P Dow Jones Indices《SPIVA U.S. Scorecard》，长期跟踪显示多数主动管理基金跑输各自的业绩基准，https://www.spglobal.com/spdji/en/spiva/
 - 备注：过去业绩不能预测未来业绩，是监管文件和行业研究反复提醒的共识；本条不承诺任何未来收益。改掉做法是：看三到五年以上的长期表现、对照基准和同类平均，再结合费用和风险一起判断，而不是只看一年排名。
 
 ### 2. 买名字好听、主题热门的基金
@@ -26,8 +26,8 @@
 - 说人话：多花钱请人管，就要看他长期到底有没有管出比基准更好的结果。
 - 收益：能更早发现不值得继续付高费用的基金，把钱留在更划算的选择上。
 - 证据等级：A
-- 来源：SPIVA 报告，标普道琼斯指数公司，https://www.spglobal.com/spdji/en/spiva/ ；Vanguard 研究，https://investor.vanguard.com
-- 备注：SPIVA 的长期结论是多数主动基金跑不赢基准，但这不等于每一只主动基金都不行，也不等于指数基金在任何时期都更好；比较时要用同一基准和足够长的时间。改掉做法是：每年固定检查一次，拿基金长期净值表现和费用与同一基准比较，长期明显落后就考虑换成费用更低、跟踪更透明的选择。
+- 来源：S&P Dow Jones Indices《SPIVA U.S. Scorecard》，https://www.spglobal.com/spdji/en/spiva/；Eugene F. Fama 与 Kenneth R. French，《Luck versus Skill in the Cross-Section of Mutual Fund Returns》，Journal of Finance，2010，https://doi.org/10.1111/j.1540-6261.2010.01598.x
+- 备注：SPIVA 的长期结论是多数主动基金跑不赢基准；Fama 与 French 2010 年的研究也发现，扣除费用后能持续跑赢基准的主动基金极少。与 eternity4719/HowToLiveBetter 第 5 章第 17 条的来源一致，见 https://github.com/eternity4719/HowToLiveBetter/blob/main/book/05-不要浪费钱.md 。这不等于每一只主动基金都不行，也不等于指数基金在任何时期都更好；比较时要用同一基准和足够长的时间。改掉做法是：每年固定检查一次，拿基金长期净值表现和费用与同一基准比较，长期明显落后就考虑换成费用更低、跟踪更透明的选择。
 
 ### 4. 持有太多只重叠的基金，以为越多越分散
 <!-- 成本标签: 钱=少 时间=中 毅力=些 收益=中 口径=代价 -->
@@ -35,8 +35,8 @@
 - 说人话：十只差不多的基金，加起来可能还是一只基金的样子。
 - 收益：组合更清爽，管理成本下降，真正的分散程度反而更清楚。
 - 证据等级：B
-- 来源：Morningstar 投资者教育，https://www.morningstar.com ；美国证券交易委员会投资者教育，https://www.investor.gov
-- 备注：分散的价值来自持仓和风险来源不同，而不是基金只数多；本条不给出具体的“最优只数”，不同目标的合理数量也不同。改掉做法是：打开每只基金的前十大持仓和行业分布做对比，合并重叠度高的基金，只保留覆盖范围互补的少数几只。
+- 来源：Morningstar，《How to Spot Hidden Overlap in Your Funds and Avoid the Diversification Trap》，https://www.morningstar.com/whats-new/how-to-spot-hidden-overlap-in-your-funds-and-avoid-the-diversification-trap
+- 备注：该文讲的是同一只股票同时出现在多只基金里的情形：基金名字和类别不同，持仓可能高度重叠。分散的价值来自持仓和风险来源不同，而不是基金只数多；本条不给出具体的“最优只数”，不同目标的合理数量也不同。改掉做法是：打开每只基金的前十大持仓和行业分布做对比，合并重叠度高的基金，只保留覆盖范围互补的少数几只。
 
 ### 5. 忽视基金规模、跟踪误差、流动性，买小而贵的 ETF
 <!-- 成本标签: 钱=多 时间=少 毅力=否 收益=中 口径=代价 -->
@@ -44,5 +44,5 @@
 - 说人话：ETF 不只看它跟踪什么，还要看它跟得准不准、贵不贵、好不好买卖。
 - 收益：选到跟踪更稳、费用更低、交易更顺的 ETF，长期持有更省心。
 - 证据等级：B
-- 来源：Morningstar 投资者教育，https://www.morningstar.com ；Vanguard 研究，https://investor.vanguard.com
+- 来源：Vanguard 研究《The Case for Low-Cost Index Fund Investing》，2022 年 5 月，其中讨论指数基金与 ETF 的费率、跟踪误差等因素，https://www.vanguardsouthamerica.com/content/dam/intl/americas/documents/latam/en/2022/05/mx-sa-2217207-the-case-for-low-cost-index-fund-investing.pdf
 - 备注：规模、跟踪误差和流动性只是参考维度，不是唯一的判断标准；小规模 ETF 不一定立刻出问题，但风险相对更高，新手应优先关注。改掉做法是：买 ETF 前至少看三项——总费用率、与指数的跟踪差距、日均成交情况，避开规模很小且费用明显偏高的产品。
