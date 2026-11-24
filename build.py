@@ -411,35 +411,245 @@ footer a{color:var(--t2)}
 .themes .btn{border:0;background:transparent;height:26px;padding:0 9px}
 .themes .btn[aria-pressed=true]{background:var(--bg-elv);color:var(--brand-1);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 
-/* ---- A 杂志编辑风 ---- */
-[data-theme="a"] body{background-image:radial-gradient(ellipse at 20% -10%,rgba(169,52,31,.05),transparent 55%),radial-gradient(ellipse at 90% 0%,rgba(138,109,47,.06),transparent 50%)}
-[data-theme="a"] .hero h1{letter-spacing:.06em}
-[data-theme="a"] .hero .eyebrow{letter-spacing:.28em}
-[data-theme="a"] .hero .stat b{font-family:var(--serif)}
-[data-theme="a"] .sec-h{border-bottom:2px solid var(--t1)}
-[data-theme="a"] .card{border-radius:10px}
-[data-theme="a"] .intro::first-letter{font-family:var(--serif);font-size:1.9em;line-height:1;color:var(--brand-1);margin-right:2px}
+/* ---- layout-only blocks: hidden by default, each theme shows its own ---- */
+.masthead,.cover,.toc-mag,.feature,.dash,.hero-c,.statusbar-c{display:none}
+.cards{display:block}
+.sec-no{display:none}
+.mag-head{margin:64px 0 8px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.mag-head .no{font-family:var(--serif);font-style:italic;font-weight:700;color:var(--brand-1);font-size:20px}
+.mag-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4.6vw,40px);margin:0;line-height:1.25}
+.mag-head .en{font-family:var(--serif);letter-spacing:.24em;font-size:12px;color:var(--t3);text-transform:uppercase}
+.mag-rule{border:0;border-top:1px solid var(--t1);margin:0}
+.mag-rule2{border:0;border-top:1px solid var(--divider);margin:3px 0 0}
 
-/* ---- B 极简现代风 ---- */
-[data-theme="b"] .hero h1{font-family:var(--font);font-weight:750;letter-spacing:-.03em}
-[data-theme="b"] .hero .eyebrow{letter-spacing:.14em;color:var(--t3)}
+/* ================= A 杂志编辑风 =================
+   Matches preview A: masthead, cover hero, magazine TOC with intros,
+   Chapter 1 feature article (drop cap, two-column lead), editorial cards. */
+[data-theme="a"] .toc{display:none}
+[data-theme="a"] .hero{display:none}
+[data-theme="a"] .hero-c{display:none}
+[data-theme="a"] .dash{display:none}
+[data-theme="a"] .statusbar-c{display:none}
+[data-theme="a"] .masthead{display:block;max-width:1140px;margin:0 auto;padding:26px 22px 0}
+[data-theme="a"] .masthead .mh-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-family:var(--serif);font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--t2);
+  border-bottom:1px solid var(--t1);padding-bottom:10px}
+[data-theme="a"] .masthead .mh-top .brand{font-weight:900;letter-spacing:.24em;color:var(--t1)}
+[data-theme="a"] .cover{display:block;max-width:1140px;margin:0 auto;padding:44px 22px 8px}
+[data-theme="a"] .cover .issue-line{display:flex;align-items:center;gap:14px;color:var(--brand-1);
+  font-size:13px;letter-spacing:.3em;font-weight:700;margin-bottom:20px}
+[data-theme="a"] .cover .issue-line::after{content:"";flex:1;border-top:1px solid var(--divider)}
+[data-theme="a"] .cover h1{font-family:var(--serif);font-weight:900;font-size:clamp(44px,8vw,84px);
+  line-height:1.15;margin:18px 0}
+[data-theme="a"] .cover h1 .thin{display:block;font-weight:400;font-size:.55em;letter-spacing:.18em}
+[data-theme="a"] .cover h1 em{font-style:normal;color:var(--brand-1)}
+[data-theme="a"] .cover .standfirst{font-family:var(--serif);font-size:18px;line-height:1.9;color:var(--t2);max-width:720px;margin:0}
+[data-theme="a"] .cover-meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:34px;
+  border-top:1px solid var(--t1);border-bottom:1px solid var(--divider)}
+[data-theme="a"] .cover-meta div{padding:14px 16px 12px;border-left:1px solid var(--divider)}
+[data-theme="a"] .cover-meta div:first-child{border-left:none;padding-left:0}
+[data-theme="a"] .cover-meta b{font-family:var(--serif);font-size:30px;font-weight:900;display:block;line-height:1.1}
+[data-theme="a"] .cover-meta span{font-size:12px;letter-spacing:.18em;color:var(--t3)}
+[data-theme="a"] .cover-note{margin-top:14px;font-size:13px;color:var(--t3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+[data-theme="a"] .cover-note .warn{color:var(--brand-1);font-weight:700}
+[data-theme="a"] .toc-mag{display:block;max-width:1140px;margin:0 auto;padding:0 22px}
+[data-theme="a"] .toc-item{display:grid;grid-template-columns:86px 1fr auto;gap:18px;align-items:start;
+  padding:20px 4px;border-bottom:1px solid var(--divider)}
+[data-theme="a"] .toc-item:hover{background:rgba(251,247,236,.7)}
+[data-theme="a"] .toc-item:hover a{text-decoration:none}
+[data-theme="a"] .toc-num{font-family:var(--serif);font-weight:900;font-size:28px;line-height:1.1;color:var(--t1)}
+[data-theme="a"] .toc-num small{display:block;font-family:var(--serif);font-size:11px;font-weight:400;letter-spacing:.2em;color:var(--t3)}
+[data-theme="a"] .toc-body h3{font-family:var(--serif);font-size:22px;font-weight:700;margin:0}
+[data-theme="a"] .toc-body h3 a{color:var(--t1)}
+[data-theme="a"] .toc-body p{color:var(--t2);font-size:15px;line-height:1.9;margin:6px 0 0}
+[data-theme="a"] .toc-count{font-size:13px;color:var(--t3);white-space:nowrap}
+[data-theme="a"] .feature{display:block;max-width:1140px;margin:26px auto 0;padding:clamp(22px,4.5vw,44px);
+  background:var(--bg-elv);border:1px solid var(--divider);position:relative}
+[data-theme="a"] .feature::before{content:"特稿 · FEATURE";position:absolute;top:-11px;left:26px;background:var(--bg);
+  padding:0 10px;font-size:12px;letter-spacing:.3em;color:var(--brand-1);font-weight:700}
+[data-theme="a"] .feature .ch{font-family:var(--serif);font-style:italic;color:var(--t3);font-size:15px}
+[data-theme="a"] .feature h3{font-family:var(--serif);font-weight:900;font-size:clamp(26px,4vw,36px);margin:4px 0 6px;line-height:1.3}
+[data-theme="a"] .feature .lead{font-family:var(--serif);font-size:17.5px;line-height:2;color:var(--t2);margin:18px 0 0;
+  columns:2;column-gap:44px;column-rule:1px solid var(--divider)}
+[data-theme="a"] .feature .lead::first-letter{font-family:var(--serif);font-weight:900;font-size:3.1em;float:left;
+  line-height:1;padding:6px 10px 0 0;color:var(--brand-1)}
+[data-theme="a"] .feature-list{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid var(--divider)}
+[data-theme="a"] .feature-list li{display:flex;gap:14px;align-items:baseline;padding:11px 2px;border-bottom:1px solid var(--divider);
+  font-family:var(--serif);font-size:16.5px;font-weight:600}
+[data-theme="a"] .feature-list li a{color:var(--t1)}
+[data-theme="a"] .feature-list .n{font-family:var(--serif);font-style:italic;color:var(--brand-1);font-weight:700;min-width:26px}
+[data-theme="a"] .feature-list .g{margin-left:auto;font-family:var(--font);font-size:12px;font-weight:700;color:var(--yellow-1);letter-spacing:.1em;white-space:nowrap}
+[data-theme="a"] .shell{display:block}
+[data-theme="a"] main{max-width:1140px;margin:0 auto;padding:8px 22px 120px}
+[data-theme="a"] section{margin-bottom:64px}
+[data-theme="a"] .sec-h{border-bottom:2px solid var(--t1);padding-bottom:10px}
+[data-theme="a"] .sec-h h2{font-family:var(--serif);font-weight:900;font-size:34px}
+[data-theme="a"] .intro{columns:2;column-gap:36px;column-rule:1px solid var(--divider)}
+[data-theme="a"] .intro::first-letter{font-family:var(--serif);font-size:1.9em;line-height:1;color:var(--brand-1);margin-right:2px}
+[data-theme="a"] .card{background:var(--bg-elv);border:1px solid var(--divider);border-radius:4px;box-shadow:none}
+[data-theme="a"] .card:hover{border-color:var(--brand-1)}
+[data-theme="a"] .chead h3{font-family:var(--serif);font-size:20px}
+[data-theme="a"] .plain{font-family:var(--serif)}
+
+/* ================= B 极简现代风 =================
+   Matches preview B: 288px fixed left sidebar (brand + stats + nav),
+   minimal hero with big sans headline + action buttons, simple cards
+   indented under the chapter intro, lots of whitespace. */
+[data-theme="b"] .masthead{display:none}
+[data-theme="b"] .cover{display:none}
+[data-theme="b"] .toc-mag{display:none}
+[data-theme="b"] .feature{display:none}
+[data-theme="b"] .hero-c{display:none}
+[data-theme="b"] .dash{display:none}
+[data-theme="b"] .statusbar-c{display:none}
+[data-theme="b"] .hero{display:block}
+[data-theme="b"] .hero{padding-bottom:32px;border-bottom:1px solid var(--divider)}
+[data-theme="b"] .hero .eyebrow{letter-spacing:.14em;color:var(--t3);font-size:13px;font-weight:500}
 [data-theme="b"] .hero .eyebrow::after{display:none}
-[data-theme="b"] .sec-h h2,[data-theme="b"] .chead h3{font-family:var(--font);font-weight:700;letter-spacing:-.02em}
+[data-theme="b"] .hero h1{font-family:var(--font);font-weight:750;letter-spacing:-.03em;font-size:40px;line-height:1.15}
+[data-theme="b"] .hero .lede{font-size:16.5px;line-height:1.8;max-width:620px}
+[data-theme="b"] .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+[data-theme="b"] .btn-primary{background:var(--t1);color:var(--bg);border-color:var(--t1)}
+[data-theme="b"] .btn-primary:hover{background:var(--t1);color:var(--bg);text-decoration:none;opacity:.88}
+[data-theme="b"] .toc .brand{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--t2);margin-bottom:14px}
+[data-theme="b"] .toc .book-title{font-family:var(--font);font-weight:750;font-size:26px;line-height:1.25;letter-spacing:-.02em}
+[data-theme="b"] .toc .book-sub{font-size:13.5px;line-height:1.8;color:var(--t2);margin:10px 0 16px}
+[data-theme="b"] .toc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--divider)}
+[data-theme="b"] .toc-stats b{display:block;font-size:22px;font-weight:750;line-height:1.2}
+[data-theme="b"] .toc-stats span{font-size:11px;color:var(--t3)}
+[data-theme="b"] .toc .nav-label{font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.08em;margin-bottom:8px}
 [data-theme="b"] .sec-h{border-bottom:1px solid var(--divider)}
-[data-theme="b"] .card{border-radius:14px}
+[data-theme="b"] .sec-h h2{font-family:var(--font);font-weight:700;letter-spacing:-.02em;font-size:24px}
+[data-theme="b"] .chead h3{font-family:var(--font);font-weight:650;letter-spacing:-.01em;font-size:17.5px}
+[data-theme="b"] .intro{margin-left:52px}
+[data-theme="b"] .cards{display:flex;flex-direction:column;gap:16px;margin-left:52px}
+[data-theme="b"] .card{margin-bottom:0;border-radius:14px}
 [data-theme="b"] .plain{font-family:var(--font);border-left-width:2px}
 [data-theme="b"] .hero .stat b{font-family:var(--font);font-weight:750}
 
-/* ---- C 深色金融风 ---- */
+/* ================= C 深色金融风 =================
+   Matches preview C: status bar, KPI dashboard hero (2x2 KPI cards with
+   spark bars), chapter ticker, grade-distribution bar, 8-chapter index
+   table with grade mini-bars, 2-column cards with red/green P/L fields. */
+[data-theme="c"] .masthead{display:none}
+[data-theme="c"] .cover{display:none}
+[data-theme="c"] .toc-mag{display:none}
+[data-theme="c"] .feature{display:none}
+[data-theme="c"] .hero{display:none}
+[data-theme="c"] .toc{display:none}
 [data-theme="c"] body{background-image:linear-gradient(rgba(56,89,140,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(56,89,140,.055) 1px,transparent 1px);background-size:44px 44px}
-[data-theme="c"] .hero{border:1px solid var(--divider);border-radius:14px;background:linear-gradient(180deg,var(--bg-elv) 0%,#0b111e 100%);padding:34px;margin-top:22px}
-[data-theme="c"] .hero h1{font-family:var(--font);font-weight:750;letter-spacing:-.02em}
-[data-theme="c"] .hero .stat b{font-family:var(--mono);font-variant-numeric:tabular-nums}
-[data-theme="c"] .card{background:var(--bg-elv);border-radius:10px}
+[data-theme="c"] .statusbar-c{display:flex;max-width:1180px;margin:0 auto;padding:12px 20px 0;gap:16px;align-items:center;
+  font-family:var(--mono);font-size:12px;color:var(--t3);flex-wrap:wrap}
+[data-theme="c"] .statusbar-c .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green-1);flex:none;
+  box-shadow:0 0 0 3px rgba(47,213,152,.18)}
+[data-theme="c"] .statusbar-c a{color:var(--t2)}
+[data-theme="c"] .statusbar-c nav{display:flex;gap:16px;margin-left:auto}
+[data-theme="c"] .hero-c{display:block;max-width:1180px;margin:14px auto 0;padding:0 20px}
+[data-theme="c"] .hero-c .panel{border:1px solid var(--divider);border-radius:14px;
+  background:linear-gradient(180deg,var(--bg-elv) 0%,#0b111e 100%);overflow:hidden}
+[data-theme="c"] .hero-grid{display:grid;grid-template-columns:1.25fr .95fr}
+[data-theme="c"] .hero-main{padding:34px 34px 30px;border-right:1px solid var(--divider-soft)}
+[data-theme="c"] .hero-kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--green-1);text-transform:uppercase;margin:0 0 14px}
+[data-theme="c"] .hero-c h1{font-family:var(--font);font-size:clamp(34px,5.4vw,54px);line-height:1.12;font-weight:900;letter-spacing:.01em;margin:0 0 14px}
+[data-theme="c"] .hero-c h1 .thin{color:var(--t2);font-weight:500}
+[data-theme="c"] .hero-sub{color:var(--t2);font-size:16.5px;line-height:1.8;margin:0;max-width:34em}
+[data-theme="c"] .hero-sub strong{color:var(--t1)}
+[data-theme="c"] .hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+[data-theme="c"] .hero-meta .chip{font-family:var(--mono);font-size:12px;color:var(--t2);border:1px solid var(--divider);
+  border-radius:999px;padding:5px 12px}
+[data-theme="c"] .hero-meta .chip b{color:var(--t1)}
+[data-theme="c"] .hero-meta .chip .down{color:var(--red-1)}
+[data-theme="c"] .hero-meta .chip .up{color:var(--green-1)}
+[data-theme="c"] .kpis{display:grid;grid-template-columns:1fr 1fr}
+[data-theme="c"] .kpi{padding:24px 24px 20px;border-bottom:1px solid var(--divider-soft)}
+[data-theme="c"] .kpi:nth-child(odd){border-right:1px solid var(--divider-soft)}
+[data-theme="c"] .kpi:nth-child(3),[data-theme="c"] .kpi:nth-child(4){border-bottom:none}
+[data-theme="c"] .kpi-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;color:var(--t3);text-transform:uppercase;
+  margin:0 0 8px;display:flex;justify-content:space-between;gap:8px}
+[data-theme="c"] .kpi-num{font-family:var(--mono);font-size:clamp(34px,4vw,44px);font-weight:600;line-height:1;color:var(--t1)}
+[data-theme="c"] .kpi-num small{font-size:16px;color:var(--t3);font-weight:500}
+[data-theme="c"] .kpi-note{color:var(--t3);font-size:13px;margin:9px 0 0;line-height:1.55}
+[data-theme="c"] .spark{display:flex;gap:3px;align-items:flex-end;height:28px;margin-top:12px}
+[data-theme="c"] .spark i{flex:1;background:#22345c;border-radius:2px 2px 0 0}
+[data-theme="c"] .spark i.hot{background:var(--brand-1)}
+[data-theme="c"] .dash{display:block;max-width:1180px;margin:0 auto;padding:0 20px}
+[data-theme="c"] .ticker{border:1px solid var(--divider);border-top:none;border-radius:0 0 14px 14px;background:var(--bg-alt);overflow:hidden}
+[data-theme="c"] .ticker-track{display:flex;gap:0;white-space:nowrap;animation:tick 46s linear infinite;padding:10px 0;width:max-content}
+[data-theme="c"] .ticker:hover .ticker-track{animation-play-state:paused}
+[data-theme="c"] .ticker span{font-family:var(--mono);font-size:12.5px;color:var(--t3);padding:0 18px}
+[data-theme="c"] .ticker span b{color:var(--t2);font-weight:600}
+[data-theme="c"] .ticker span .g{color:var(--green-1)}
+[data-theme="c"] .ticker span .r{color:var(--red-1)}
+[data-theme="c"] .ticker span .a{color:var(--yellow-1)}
+@keyframes tick{to{transform:translateX(-50%)}}
+[data-theme="c"] .dash-sec{margin-top:28px}
+[data-theme="c"] .dash-sec .sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+[data-theme="c"] .dash-sec .sec-head .no{font-family:var(--mono);color:var(--green-1);font-size:13px;letter-spacing:.14em}
+[data-theme="c"] .dash-sec .sec-head h2{font-size:24px;font-weight:700;margin:0;letter-spacing:.01em}
+[data-theme="c"] .dash-sec .sec-head p{margin:0;color:var(--t3);font-size:14px;margin-left:auto}
+[data-theme="c"] .dist{border:1px solid var(--divider);border-radius:12px;padding:22px 24px;background:var(--bg-elv)}
+[data-theme="c"] .dist-bar{display:flex;height:34px;border-radius:6px;overflow:hidden;border:1px solid var(--divider)}
+[data-theme="c"] .dist-bar div{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:600;min-width:0}
+[data-theme="c"] .seg-a{background:var(--green-1);color:#06281c}
+[data-theme="c"] .seg-b{background:var(--yellow-1);color:#2b1d05}
+[data-theme="c"] .seg-c{background:#33415e;color:var(--t1)}
+[data-theme="c"] .dist-legend{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px;font-size:13px;color:var(--t2)}
+[data-theme="c"] .dist-foot{margin-top:16px;padding-top:14px;border-top:1px dashed var(--divider);color:var(--t3);font-size:13px;
+  display:flex;gap:8px 22px;flex-wrap:wrap;font-family:var(--mono)}
+[data-theme="c"] .dist-foot b{color:var(--t2)}
+[data-theme="c"] .idx-row{display:grid;grid-template-columns:44px 1fr 70px 180px;gap:14px;align-items:center;
+  padding:12px 4px;border-bottom:1px solid var(--divider-soft)}
+[data-theme="c"] .idx-row .idx-no{font-family:var(--mono);font-size:13px;color:var(--t3)}
+[data-theme="c"] .idx-row a{color:var(--t1);font-weight:600}
+[data-theme="c"] .idx-row .idx-count{font-family:var(--mono);font-size:12.5px;color:var(--t3);text-align:right}
+[data-theme="c"] .minibar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--bg-mute)}
+[data-theme="c"] .minibar i{display:block;height:100%}
+[data-theme="c"] .shell{display:block}
+[data-theme="c"] main{max-width:1180px;margin:0 auto;padding:8px 20px 120px}
+[data-theme="c"] .sec-h .sec-no{display:inline;font-family:var(--mono);color:var(--green-1);font-size:13px;letter-spacing:.14em}
+[data-theme="c"] .sec-h h2{font-family:var(--font);font-weight:700;font-size:24px}
+[data-theme="c"] .sec-h{border-bottom:1px solid var(--divider)}
+[data-theme="c"] .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+[data-theme="c"] .card{margin-bottom:0;background:var(--bg-elv);border-radius:10px}
+[data-theme="c"] .card:hover{border-color:#2b4166}
 [data-theme="c"] .num{font-family:var(--mono)}
+[data-theme="c"] .chead h3{font-size:19.5px}
+[data-theme="c"] .chips,[data-theme="c"] .plain,[data-theme="c"] .src{margin-left:0}
 [data-theme="c"] .plain{font-family:var(--font);border-left-color:var(--green-1)}
-[data-theme="c"] .toc{background:var(--bg-alt)}
+[data-theme="c"] .fields{margin-left:0;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--divider);
+  border-radius:8px;overflow:hidden}
+[data-theme="c"] .fields .f{display:block;padding:12px 14px;border-top:0}
+[data-theme="c"] .fields .f b{display:block;font-size:11px;letter-spacing:.1em;margin-bottom:4px}
+[data-theme="c"] .f-cost{background:rgba(251,113,133,.06)}
+[data-theme="c"] .f-cost b{color:var(--red-1)}
+[data-theme="c"] .f-gain{background:rgba(47,213,152,.06)}
+[data-theme="c"] .f-gain b{color:var(--green-1)}
+[data-theme="c"] .fields .f.note{grid-column:1/-1;background:transparent;border-top:1px solid var(--divider-soft)}
 [data-theme="c"] .bar{background:var(--bg)}
+
+/* ---- per-theme mobile ---- */
+@media (max-width:820px){
+  [data-theme="a"] .cover-meta{grid-template-columns:1fr 1fr}
+  [data-theme="a"] .cover-meta div{padding-left:12px}
+  [data-theme="a"] .cover-meta div:nth-child(odd){border-left:none;padding-left:0}
+  [data-theme="a"] .cover-meta div:nth-child(n+3){border-top:1px solid var(--divider)}
+  [data-theme="a"] .toc-item{grid-template-columns:64px 1fr;gap:12px}
+  [data-theme="a"] .toc-count{display:none}
+  [data-theme="a"] .feature .lead{columns:1}
+  [data-theme="a"] .intro{columns:1}
+  [data-theme="b"] .hero h1{font-size:32px}
+  [data-theme="b"] .intro,[data-theme="b"] .cards{margin-left:0}
+  [data-theme="c"] .hero-grid{grid-template-columns:1fr}
+  [data-theme="c"] .hero-main{border-right:none;border-bottom:1px solid var(--divider-soft);padding:26px 22px 24px}
+  [data-theme="c"] .kpi{padding:18px 16px 16px}
+  [data-theme="c"] .cards{grid-template-columns:1fr}
+  [data-theme="c"] .dist-legend{grid-template-columns:1fr}
+  [data-theme="c"] .idx-row{grid-template-columns:34px 1fr 56px}
+  [data-theme="c"] .idx-row .minibar{display:none}
+  [data-theme="c"] .ticker-track{animation:none;flex-wrap:wrap;white-space:normal;width:auto}
+  [data-theme="c"] .kpi-label .delta{display:none}
+  [data-theme="c"] .kpi-label{letter-spacing:.08em}
+}
 
 @media print{
   .bar,.toc,#top,.hero .stats{display:none}
@@ -474,7 +684,8 @@ def render_entry(e, sec_no):
     rows = []
     for k in ("成本", "收益"):
         if f.get(k):
-            rows.append('<div class="f"><b>%s</b><div>%s</div></div>' % (k, inline(f[k])))
+            cls = "f-cost" if k == "成本" else "f-gain"
+            rows.append('<div class="f %s"><b>%s</b><div>%s</div></div>' % (cls, k, inline(f[k])))
     if f.get("备注"):
         rows.append('<div class="f note"><b>备注</b><div>%s</div></div>' % inline(f["备注"]))
 
@@ -655,6 +866,7 @@ if(jump) secs.forEach(s=>io.observe(s));
 def main():
     sec_toc = []
     sec_html = []
+    chapters = []
     jump_opts = []
     total = 0
     grade_cnt = {"A": 0, "B": 0, "C": 0}
@@ -681,12 +893,21 @@ def main():
         sec_toc.append('<div class="grp"><div class="gt">%s<small>%d 条</small></div>%s</div>'
                        % (inline(title), len(entries), "".join(links)))
         sec_html.append(
-            '<section id="sec%d"><div class="sec-h"><h2>%s</h2>'
-            '<span class="meta">%d 条</span></div>%s%s</section>'
-            % (n, inline(title), len(entries),
+            '<section id="sec%d"><div class="sec-h"><span class="sec-no">/ %02d</span><h2>%s</h2>'
+            '<span class="meta">%d 条</span></div>%s<div class="cards">%s</div></section>'
+            % (n, n, inline(title), len(entries),
                ('<p class="intro">%s</p>' % inline(" ".join(intro))) if intro else "",
                "".join(cards)))
         jump_opts.append('<option value="sec%d">%s</option>' % (n, html.escape(title)))
+        chg = {"A": 0, "B": 0, "C": 0}
+        ch_entries = []
+        for e in entries:
+            gg = (e["fields"].get("证据等级") or "?").strip()[:1]
+            if gg in chg:
+                chg[gg] += 1
+            ch_entries.append((e["title"], gg))
+        chapters.append({"n": n, "title": title, "intro": " ".join(intro),
+                         "grades": chg, "entries": ch_entries})
 
     rev, rev_date = source_rev()
 
@@ -731,26 +952,148 @@ def main():
               '由 build.py 生成。</footer>'
               % (src_line, total, grade_cnt["A"], grade_cnt["B"], grade_cnt["C"], link_total))
 
-    hero = ('<header class="hero"><p class="eyebrow">高性价比投资指南 · 新手避坑手册</p>'
-            '<h1>高性价比投资指南</h1>'
-            '<p class="lede">投资亏钱，很多时候不是选错了标的，而是先犯了一个本可以避开的错误。'
-            '本书把新手最容易犯的错误一条一条写清楚：它会花掉你什么、代价有多大、证据有多硬，以及改掉它该怎么做。</p>'
-            '<div class="stats">'
-            '<div class="stat"><b>%d</b><span>章节</span></div>'
-            '<div class="stat"><b>%d</b><span>条错误</span></div>'
-            '<div class="stat"><b>%d</b><span>A 级证据</span></div>'
-            '</div>'
-            '<p class="note">仅供投资者教育，不构成投资建议。单文件、零依赖，可离线阅读。</p></header>'
-            % (len(SECTIONS), total, grade_cnt["A"]))
+    # --- A 杂志编辑风: masthead + cover ---
+    masthead = ('<div class="masthead"><div class="mh-top">'
+                '<span class="brand">HOW TO INVEST BETTER</span>'
+                '<span>第 01 期 · 投资避坑特辑</span>'
+                '<span>杂志编辑风</span></div></div>')
+    cover = ('<header class="cover"><div class="issue-line"><span>特辑 · SPECIAL ISSUE</span></div>'
+             '<h1><span class="thin">高 性 价 比</span>投资<em>指南</em></h1>'
+             '<p class="standfirst">总结投资中容易犯的错误，让新手投资者阅读完以后能有所受益——'
+             '不追热点，不赌运气，先把学费省下来。</p>'
+             '<div class="cover-meta">'
+             '<div><b>%d</b><span>全书章节</span></div>'
+             '<div><b>%d</b><span>错误条目</span></div>'
+             '<div><b>%d</b><span>A 级证据条目</span></div>'
+             '<div><b>5</b><span>每章条目</span></div></div>'
+             '<div class="cover-note"><span>本页 8 章 40 条，文字未作改动。</span>'
+             '<span class="warn">仅供投资者教育，不构成投资建议。</span></div></header>'
+             % (len(SECTIONS), total, grade_cnt["A"]))
+    # --- B 极简现代风: minimal hero (preview B copy) ---
+    hero = ('<header class="hero"><p class="eyebrow">干净无衬线 · 大量留白 · 左侧导航</p>'
+            '<h1>少犯错，<br>就是高性价比。</h1>'
+            '<p class="lede">这版把装饰全部拿掉：白底、细边框、宽行距。注意力只留给标题、“说人话”和证据等级。'
+            '投资亏钱，很多时候不是选错了标的，而是先犯了一个本可以避开的错误。</p>'
+            '<div class="hero-actions">'
+            '<a class="btn btn-primary" href="#sec1">从第 1 章开始看</a>'
+            '<a class="btn" href="#sec4">直接看费用与税</a></div></header>')
+    # --- C 深色金融风: status bar + KPI dashboard hero ---
+    spark1 = "".join('<i style="height:%d%%"%s></i>' % (h, ' class="hot"' if hot else "")
+                     for h, hot in [(55, False), (55, False), (55, False), (55, False),
+                                    (55, False), (55, False), (55, False), (55, True)])
+    spark2 = "".join('<i style="height:%d%%"%s></i>' % (h, ' class="hot"' if hot else "")
+                     for h, hot in [(40, False), (52, False), (47, False), (66, False),
+                                    (58, False), (74, False), (69, False), (88, True)])
+    spark3 = "".join('<i style="height:%d%%"%s></i>' % (h, ' class="hot"' if hot else "")
+                     for h, hot in [(80, True), (34, False), (72, True), (90, True),
+                                    (64, True), (30, False), (84, True), (70, True)])
+    spark4 = "".join('<i style="height:%d%%"%s></i>' % (h, ' class="hot"' if hot else "")
+                     for h, hot in [(52, False), (74, False), (52, False), (76, False),
+                                    (52, False), (76, False), (64, False), (50, False)])
+    statusbar_c = ('<div class="statusbar-c"><span class="live-dot"></span>'
+                   '<span>Investor Error Database · 投资者错误数据库</span>'
+                   '<nav><a href="#dash">章节索引</a><a href="#sec1">错误条目</a>'
+                   '<a href="https://github.com/xledoo/how-to-invest-better" target="_blank" rel="noopener">GitHub ↗</a></nav></div>')
+    hero_c = ('<div class="hero-c"><div class="panel"><div class="hero-grid">'
+              '<div class="hero-main"><p class="hero-kicker">Investor Error Database · 投资者错误数据库</p>'
+              '<h1>高性价比<br>投资指南 <span class="thin">/ 全书总览</span></h1>'
+              '<p class="hero-sub">总结<strong>投资中容易犯的错误</strong>，让新手投资者阅读完以后能有所受益。'
+              '全书按错误类型分成 8 章，每条都标了证据等级、代价和“说人话”——先看数据，再读条目。</p>'
+              '<div class="hero-meta"><span class="chip">底色 <b>&nbsp;#070B12 深空蓝黑</b></span>'
+              '<span class="chip">风险 <b class="down">&nbsp;▼ 红</b></span>'
+              '<span class="chip">收益 <b class="up">&nbsp;▲ 绿</b></span>'
+              '<span class="chip">数字 <b>&nbsp;等宽字体</b></span></div></div>'
+              '<div class="kpis">'
+              '<div class="kpi"><p class="kpi-label">章节 Chapters <span class="delta">全覆盖</span></p>'
+              '<p class="kpi-num">%d<small> 章</small></p><p class="kpi-note">从心态与认知，到个股与估值</p>'
+              '<div class="spark">%s</div></div>'
+              '<div class="kpi"><p class="kpi-label">错误条目 Errors <span class="delta">已收录</span></p>'
+              '<p class="kpi-num">%d<small> 条</small></p><p class="kpi-note">每章 5 条，每条一张卡片</p>'
+              '<div class="spark">%s</div></div>'
+              '<div class="kpi"><p class="kpi-label">A 级证据 A-Grade <span class="delta">优先读</span></p>'
+              '<p class="kpi-num">%d<small> 条 · %d%%</small></p><p class="kpi-note">有长期数据或经典研究支撑</p>'
+              '<div class="spark">%s</div></div>'
+              '<div class="kpi"><p class="kpi-label">B + C 级合计 <span class="delta">看口径</span></p>'
+              '<p class="kpi-num">%d<small> 条 · %d%%</small></p><p class="kpi-note">有支撑但要看条件，或属教育共识</p>'
+              '<div class="spark">%s</div></div>'
+              '</div></div></div></div>'
+              % (len(SECTIONS), spark1, total, spark2,
+                 grade_cnt["A"], round(100 * grade_cnt["A"] / total) if total else 0, spark3,
+                 grade_cnt["B"] + grade_cnt["C"],
+                 round(100 * (grade_cnt["B"] + grade_cnt["C"]) / total) if total else 0, spark4))
+    # --- C dash: ticker + distribution + index table ---
+    tick_notes = [("▲ 先稳心态", "g"), ("▼ 别踩反节奏", "r"), ("▲ 摊开风险", "g"),
+                  ("◆ 看不见的对手", "a"), ("▼ 双向放大", "r"), ("◆ 先查再听", "a"),
+                  ("▲ 看基准不看排名", "g"), ("▲ 先懂业务再谈价格", "g")]
+    tick_items = "".join(
+        '<span><b>%02d %s</b> <i class="%s">%s</i></span>' % (c["n"], html.escape(c["title"]), tick_notes[i][1], tick_notes[i][0])
+        for i, c in enumerate(chapters))
+    dist_w = lambda x: round(100 * x / total) if total else 0
+    idx_rows = []
+    for c in chapters:
+        g = c["grades"]
+        idx_rows.append(
+            '<div class="idx-row"><span class="idx-no">%02d</span>'
+            '<a href="#sec%d">%s</a><span class="idx-count">%d 条</span>'
+            '<span class="minibar"><i style="width:%d%%;background:var(--green-1)"></i>'
+            '<i style="width:%d%%;background:var(--yellow-1)"></i>'
+            '<i style="width:%d%%;background:#33415e"></i></span></div>'
+            % (c["n"], c["n"], html.escape(c["title"]), len(c["entries"]),
+               dist_w(g["A"]) * 5 // 1 if False else round(100 * g["A"] / 5),
+               round(100 * g["B"] / 5), round(100 * g["C"] / 5)))
+    dash = ('<div class="dash" id="dash">'
+            '<div class="ticker" aria-hidden="true"><div class="ticker-track">%s%s</div></div>'
+            '<section class="dash-sec"><div class="sec-head"><span class="no">/ 01</span><h2>证据等级分布</h2>'
+            '<p>40 条的成色，一眼看清</p></div>'
+            '<div class="dist"><div class="dist-bar">'
+            '<div class="seg-a" style="width:%d%%">A %d</div>'
+            '<div class="seg-b" style="width:%d%%">B %d</div>'
+            '<div class="seg-c" style="width:%d%%">C %d</div></div>'
+            '<div class="dist-legend"><span>A 级：有长期数据或经典研究支撑</span>'
+            '<span>B 级：有支撑，但要看条件</span><span>C 级：属教育共识，谨慎引用</span></div>'
+            '<div class="dist-foot"><span>合计 <b>%d 条</b></span><span>A <b>%d</b></span>'
+            '<span>B <b>%d</b></span><span>C <b>%d</b></span></div></div></section>'
+            '<section class="dash-sec"><div class="sec-head"><span class="no">/ 02</span><h2>章节索引</h2>'
+            '<p>每章 5 条 · 点击直达</p></div>%s</section></div>'
+            % (tick_items, tick_items, dist_w(grade_cnt["A"]), grade_cnt["A"],
+               dist_w(grade_cnt["B"]), grade_cnt["B"], dist_w(grade_cnt["C"]), grade_cnt["C"],
+               total, grade_cnt["A"], grade_cnt["B"], grade_cnt["C"], "".join(idx_rows)))
+    # --- A 杂志 TOC + Chapter 1 feature ---
+    toc_items = "".join(
+        '<article class="toc-item"><div class="toc-num">%02d<small>CHAPTER</small></div>'
+        '<div class="toc-body"><h3><a href="#sec%d">%s</a></h3><p>%s</p></div>'
+        '<div class="toc-count">%d 条</div></article>'
+        % (c["n"], c["n"], html.escape(c["title"]), inline(c["intro"]), len(c["entries"]))
+        for c in chapters)
+    toc_mag = ('<div class="toc-mag"><div class="mag-head"><span class="no">№ 01</span><h2>本期目录</h2>'
+               '<span class="en">Contents</span></div><hr class="mag-rule"><hr class="mag-rule2">%s</div>' % toc_items)
+    ch1 = chapters[0] if chapters else {"n": 1, "title": "", "intro": "", "entries": []}
+    feat_items = "".join(
+        '<li><span class="n">%d.</span><a href="#s%d-%d">%s</a><span class="g">%s 级证据</span></li>'
+        % (i + 1, ch1["n"], i + 1, html.escape(ti), gr)
+        for i, (ti, gr) in enumerate(ch1["entries"]))
+    feature = ('<div class="toc-mag"><div class="mag-head"><span class="no">№ 02</span><h2>本期特稿</h2>'
+               '<span class="en">Feature</span></div><hr class="mag-rule"><hr class="mag-rule2">'
+               '<section class="feature"><span class="ch">Chapter 01 — 第一章</span><h3>%s</h3>'
+               '<p class="lead">%s</p><ul class="feature-list">%s</ul></section></div>'
+               % (html.escape(ch1["title"]), inline(ch1["intro"]), feat_items))
+    toc_head = ('<div class="brand">How to Invest Better</div>'
+                '<div class="book-title">高性价比<br>投资指南</div>'
+                '<p class="book-sub">总结投资中容易犯的错误，让新手投资者阅读完以后能有所受益。</p>'
+                '<div class="toc-stats"><div><b>%d</b><span>章节</span></div>'
+                '<div><b>%d</b><span>条目</span></div>'
+                '<div><b>%d</b><span>A 级证据</span></div></div>'
+                '<div class="nav-label">目录 — 全书 %d 节</div>'
+                % (len(SECTIONS), total, grade_cnt["A"], len(SECTIONS)))
     shell = ('<div class="shell"><aside class="toc">%s</aside><main>%s'
              '<div class="empty hidden" id="empty">没有匹配的条目</div>%s'
              '</main></div>'
              '<button id="top" title="回到顶部" aria-label="回到顶部">↑</button>'
-             % ("".join(sec_toc), "".join(sec_html), footer))
+             % (toc_head + "".join(sec_toc), "".join(sec_html), footer))
 
     # 注意：JS 字符串只含脚本体，<script> 开合标签在这里拼。
     # 之前漏了开标签，导致整段 JS 被当纯文本渲染在页面底部、脚本从未执行。
-    out = head + bar + hero + shell + "<script>" + JS + "</script></body></html>"
+    out = head + bar + masthead + cover + hero + statusbar_c + hero_c + dash + toc_mag + feature + shell + "<script>" + JS + "</script></body></html>"
 
     if ARGS.out:
         name = Path(ARGS.out)
