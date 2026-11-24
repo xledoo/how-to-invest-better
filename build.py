@@ -375,12 +375,12 @@ footer a{color:var(--t2)}
   .spacer{display:none}
   .jump{order:2}
   .themes{order:3}
-  #f-all{order:4}#f-a{order:5}#f-plain{order:6}
-  .count{order:7;margin-left:auto}
-  .search{order:8;width:auto;max-width:none;flex:1 1 100%;margin-top:2px}
+  #f-all{order:4}#f-a{order:5}#f-b{order:6}#f-c{order:7}#f-plain{order:8}
+  .count{order:9;margin-left:auto}
+  .search{order:10;width:auto;max-width:none;flex:1 1 100%;margin-top:2px}
   .search input{height:34px}
   .search kbd{display:none}
-  body.compact .jump,body.compact #f-all,body.compact #f-a,
+  body.compact .jump,body.compact #f-all,body.compact #f-a,body.compact #f-b,body.compact #f-c,
   body.compact #f-plain,body.compact .count{display:none}
   body.compact .search{order:2;flex:1 1 120px;margin-top:0}
   body.compact .themes{order:3}
@@ -543,7 +543,22 @@ footer a{color:var(--t2)}
 /* ---- B: 整页按预览 B 重做（只影响 B 主题）----
    老顶栏隐藏；左侧导航只剩 8 行章节（带圈数字 + 章名 + 5 条），不展开条目；
    hero 移进主内容列，搜索 + 等级筛选放在 hero 下方；章节头带圈数字；卡片去阴影。 */
-[data-theme="b"] .bar{display:none}
+/* ---- B: 顶栏恢复，但按 B 的极简审美重做：白底、细线、矮条、小字 ----
+   之前整条隐藏导致 B 下无法切换主题/跳转/筛选；现在恢复同一条 .bar，
+   只在 B 下收窄、去装饰。顶栏里已有跳转下拉、全部/只看 A 级/只看说人话、
+   搜索框、计数和主题切换；B/C 级按钮只在 B 下显示（见 .f-bc）。 */
+[data-theme="b"] .bar{display:flex;background:#fff;border-bottom:1px solid var(--divider-soft);
+  padding:6px 20px;min-height:48px;gap:8px}
+[data-theme="b"] .bar h1{font-family:var(--font);font-size:14px;font-weight:650;letter-spacing:-.01em}
+[data-theme="b"] .bar h1 small{display:none}
+[data-theme="b"] .bar .jump{display:block;height:32px}
+[data-theme="b"] .bar .search{width:200px;max-width:30vw}
+[data-theme="b"] .bar .search input{height:32px}
+[data-theme="b"] .bar .btn{min-height:28px;padding:4px 10px;font-size:12px}
+[data-theme="b"] .bar .count{display:none}
+[data-theme="b"] .bar .themes .btn{padding:4px 8px}
+.f-bc{display:none}
+[data-theme="b"] .f-bc{display:inline-flex}
 [data-theme="b"]{--side:288px}
 [data-theme="b"] .toc{background:var(--bg)}
 [data-theme="b"] .toc .grp{padding:0;margin:0 0 4px;border-bottom:0}
@@ -778,6 +793,8 @@ const cnt2=document.getElementById('cnt2');
 const jump=document.getElementById('jump');
 const fAll=document.getElementById('f-all');
 const fA=document.getElementById('f-a');
+const fB=document.getElementById('f-b');
+const fC=document.getElementById('f-c');
 const fP=document.getElementById('f-plain');
 const themeBtns=[...document.querySelectorAll('[data-theme-opt]')];
 const topBtn=document.getElementById('top');
@@ -866,12 +883,14 @@ function setMode(mode){
   grade=(mode==='A'||mode==='B'||mode==='C')?mode:null;
   plainOnly=(mode==='plain');
   document.body.classList.toggle('plain-only',plainOnly);
-  const map={'all':[fAll,fAll2],'A':[fA,fA2],'B':[fB2],'C':[fC2],'plain':[fP,fP2]};
+  const map={'all':[fAll,fAll2],'A':[fA,fA2],'B':[fB,fB2],'C':[fC,fC2],'plain':[fP,fP2]};
   Object.keys(map).forEach(k=>map[k].forEach(b=>{if(b) b.setAttribute('aria-pressed',String(k===mode));}));
   apply();
 }
 fAll.onclick=()=>setMode('all');
 fA.onclick=()=>setMode('A');
+if(fB) fB.onclick=()=>setMode('B');
+if(fC) fC.onclick=()=>setMode('C');
 fP.onclick=()=>setMode('plain');
 if(fAll2) fAll2.onclick=()=>setMode('all');
 if(fA2) fA2.onclick=()=>setMode('A');
@@ -1018,6 +1037,8 @@ def main():
            '<div class="spacer"></div>'
            '<button class="btn" id="f-all">全部</button>'
            '<button class="btn" id="f-a">只看 A 级</button>'
+           '<button class="btn f-bc" id="f-b">B 级</button>'
+           '<button class="btn f-bc" id="f-c">C 级</button>'
            '<button class="btn" id="f-plain">只看说人话</button>'
            '<div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/>'
            '<path d="M20 20l-3.5-3.5"/></svg>'
@@ -1047,8 +1068,7 @@ def main():
     # --- A 杂志编辑风: masthead + cover ---
     masthead = ('<div class="masthead"><div class="mh-top">'
                 '<span class="brand">HOW TO INVEST BETTER</span>'
-                '<span>第 01 期 · 投资避坑特辑</span>'
-                '<span>杂志编辑风</span></div></div>')
+                '<span>第 01 期 · 投资避坑特辑</span></div></div>')
     cover = ('<header class="cover"><div class="issue-line"><span>特辑 · SPECIAL ISSUE</span></div>'
              '<h1><span class="thin">高 性 价 比</span>投资<em>指南</em></h1>'
              '<p class="standfirst">总结投资中容易犯的错误，让新手投资者阅读完以后能有所受益——'
@@ -1062,10 +1082,10 @@ def main():
              '<span class="warn">仅供投资者教育，不构成投资建议。</span></div></header>'
              % (len(SECTIONS), total, grade_cnt["A"]))
     # --- B 极简现代风: minimal hero (preview B copy) ---
-    hero = ('<header class="hero"><p class="eyebrow">干净无衬线 · 大量留白 · 左侧导航</p>'
+    hero = ('<header class="hero">'
             '<h1>少犯错，<br>就是高性价比。</h1>'
-            '<p class="lede">这版把装饰全部拿掉：白底、细边框、宽行距。注意力只留给标题、“说人话”和证据等级。'
-            '投资亏钱，很多时候不是选错了标的，而是先犯了一个本可以避开的错误。</p>'
+            '<p class="lede">投资亏钱，很多时候不是选错了标的，而是先犯了一个本可以避开的错误。'
+            '本书把 40 个常见错误按类型分成 8 章，每条都标了证据等级、代价和“说人话”——先看错在哪，再想怎么改。</p>'
             '<div class="hero-actions">'
             '<a class="btn btn-primary" href="#sec1">从第 1 章开始看</a>'
             '<a class="btn" href="#sec4">直接看费用与税</a></div></header>')
@@ -1091,10 +1111,9 @@ def main():
               '<h1>高性价比<br>投资指南 <span class="thin">/ 全书总览</span></h1>'
               '<p class="hero-sub">总结<strong>投资中容易犯的错误</strong>，让新手投资者阅读完以后能有所受益。'
               '全书按错误类型分成 8 章，每条都标了证据等级、代价和“说人话”——先看数据，再读条目。</p>'
-              '<div class="hero-meta"><span class="chip">底色 <b>&nbsp;#070B12 深空蓝黑</b></span>'
+              '<div class="hero-meta">'
               '<span class="chip">风险 <b class="down">&nbsp;▼ 红</b></span>'
-              '<span class="chip">收益 <b class="up">&nbsp;▲ 绿</b></span>'
-              '<span class="chip">数字 <b>&nbsp;等宽字体</b></span></div></div>'
+              '<span class="chip">收益 <b class="up">&nbsp;▲ 绿</b></span></div></div>'
               '<div class="kpis">'
               '<div class="kpi"><p class="kpi-label">章节 Chapters <span class="delta">全覆盖</span></p>'
               '<p class="kpi-num">%d<small> 章</small></p><p class="kpi-note">从心态与认知，到个股与估值</p>'
