@@ -175,33 +175,75 @@ def source_rev():
 
 CSS = r"""
 *,*::before,*::after{box-sizing:border-box}
+/* ---- themes: A magazine / B minimal (default) / C dark fintech ----
+   Tokens taken from the three preview pages (ts-spaces/...-yu-lan-a/b/c).
+   A: paper #f6efe1, ink #221a11, accent #a9341f, serif Songti/Noto Serif SC.
+   B: white #ffffff, text #111827, accent #111827, system sans.
+   C: dark #070b12, panel #0e1422, ink #e8eef7, green #2fd598, red #fb7185,
+      amber #fbbf24, cyan #38bdf8, mono numbers, 44px grid background. */
 :root{
-  --bg:#f7f3ec;--bg-alt:#f1eadf;--bg-elv:#fffdf8;--bg-mute:#efe7d8;
-  --divider:#e2d7c3;--divider-soft:#ece3d2;
-  --t1:#2b2620;--t2:#57503f;--t3:#8a7f6c;
-  --brand-1:#9a3b26;--brand-2:#7c2e1d;--brand-soft:#f6e6de;
-  --green-1:#2e6b4f;--green-soft:#e2efe6;
-  --yellow-1:#8a5a1d;--yellow-soft:#f5e9cf;
-  --red-1:#b8272c;--red-soft:#fbe4e4;
-  --gray-1:#6b6257;--gray-soft:#ece7db;
-  --mark:rgba(214,164,92,.38);
+  --bg:#ffffff;--bg-alt:#fafafa;--bg-elv:#ffffff;--bg-mute:#f3f4f6;
+  --divider:#e5e7eb;--divider-soft:#f0f0f0;
+  --t1:#111827;--t2:#4b5563;--t3:#9ca3af;
+  --brand-1:#111827;--brand-2:#111827;--brand-soft:#f3f4f6;
+  --green-1:#15803d;--green-soft:#dcfce7;
+  --yellow-1:#92400e;--yellow-soft:#fef3c7;
+  --red-1:#b91c1c;--red-soft:#fee2e2;
+  --gray-1:#6b7280;--gray-soft:#f3f4f6;
+  --mark:rgba(17,24,39,.14);
   --serif:"Songti SC","STSong","Noto Serif CJK SC","Noto Serif SC",serif;
-  --font:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
-  --bar:56px;--side:300px;
-  --shadow:0 1px 2px rgba(60,45,20,.05),0 8px 24px rgba(60,45,20,.06);
+  --bar:56px;--side:300px;--radius:14px;
+  --shadow:0 1px 2px rgba(17,24,39,.05),0 8px 24px rgba(17,24,39,.05);
 }
-[data-theme=dark]{
-  --bg:#1e1a16;--bg-alt:#241f19;--bg-elv:#292219;--bg-mute:#332b20;
-  --divider:#3d3326;--divider-soft:#332b20;
-  --t1:#ece3d1;--t2:#c9bda6;--t3:#96897a;
-  --brand-1:#e09a7a;--brand-2:#f0b394;--brand-soft:#3a2a20;
-  --green-1:#7cc79c;--green-soft:#24382e;
-  --yellow-1:#e8bd7a;--yellow-soft:#3a2f1e;
-  --red-1:#f08a8e;--red-soft:#3d2323;
-  --gray-1:#a89d8c;--gray-soft:#332b20;
-  --mark:rgba(214,164,92,.35);
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.35);
+[data-theme="b"]{
+  --bg:#ffffff;--bg-alt:#fafafa;--bg-elv:#ffffff;--bg-mute:#f3f4f6;
+  --divider:#e5e7eb;--divider-soft:#f0f0f0;
+  --t1:#111827;--t2:#4b5563;--t3:#9ca3af;
+  --brand-1:#111827;--brand-2:#111827;--brand-soft:#f3f4f6;
+  --green-1:#15803d;--green-soft:#dcfce7;
+  --yellow-1:#92400e;--yellow-soft:#fef3c7;
+  --red-1:#b91c1c;--red-soft:#fee2e2;
+  --gray-1:#6b7280;--gray-soft:#f3f4f6;
+  --mark:rgba(17,24,39,.14);
+  --serif:"Songti SC","STSong","Noto Serif CJK SC","Noto Serif SC",serif;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --bar:56px;--side:300px;--radius:14px;
+  --shadow:0 1px 2px rgba(17,24,39,.05),0 8px 24px rgba(17,24,39,.05);
+}
+[data-theme="a"]{
+  --bg:#f6efe1;--bg-alt:#efe5cf;--bg-elv:#fbf7ec;--bg-mute:#efe5cf;
+  --divider:#d9cbae;--divider-soft:#e8dcc2;
+  --t1:#221a11;--t2:#4a3f30;--t3:#7d6f5a;
+  --brand-1:#a9341f;--brand-2:#7c2a15;--brand-soft:#f3ddd2;
+  --green-1:#2e6b4f;--green-soft:#e2efe6;
+  --yellow-1:#8a6d2f;--yellow-soft:#f5e9cf;
+  --red-1:#a9341f;--red-soft:#f3ddd2;
+  --gray-1:#6b6257;--gray-soft:#ece7db;
+  --mark:rgba(169,52,31,.18);
+  --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --font:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --bar:56px;--side:300px;--radius:10px;
+  --shadow:0 1px 2px rgba(60,45,20,.06),0 8px 24px rgba(60,45,20,.07);
+}
+[data-theme="c"]{
+  --bg:#070b12;--bg-alt:#0a0f19;--bg-elv:#0e1422;--bg-mute:#111a2c;
+  --divider:#1c2940;--divider-soft:#162136;
+  --t1:#e8eef7;--t2:#aebdd2;--t3:#7d8ea9;
+  --brand-1:#38bdf8;--brand-2:#7dd3fc;--brand-soft:#0e2233;
+  --green-1:#2fd598;--green-soft:#123c2e;
+  --yellow-1:#fbbf24;--yellow-soft:#3a2c0e;
+  --red-1:#fb7185;--red-soft:#3d1a24;
+  --gray-1:#7d8ea9;--gray-soft:#111a2c;
+  --mark:rgba(56,189,248,.28);
+  --serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --font:"IBM Plex Sans","Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --bar:56px;--side:300px;--radius:10px;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.4);
 }
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--bar) + 16px)}
 body{margin:0;background:var(--bg);color:var(--t1);font:16px/1.85 var(--font);
@@ -327,7 +369,7 @@ footer a{color:var(--t2)}
   .bar h1{order:1;flex:1 1 120px;font-size:14px;overflow:hidden;text-overflow:ellipsis}
   .spacer{display:none}
   .jump{order:2}
-  #theme{order:3}
+  .themes{order:3}
   #f-all{order:4}#f-a{order:5}#f-plain{order:6}
   .count{order:7;margin-left:auto}
   .search{order:8;width:auto;max-width:none;flex:1 1 100%;margin-top:2px}
@@ -336,7 +378,7 @@ footer a{color:var(--t2)}
   body.compact .jump,body.compact #f-all,body.compact #f-a,
   body.compact #f-plain,body.compact .count{display:none}
   body.compact .search{order:2;flex:1 1 120px;margin-top:0}
-  body.compact #theme{order:3}
+  body.compact .themes{order:3}
   .hero{padding:40px 16px 30px}
   .hero h1{font-size:30px}
   .hero .lede{font-size:15.5px}
@@ -363,6 +405,42 @@ footer a{color:var(--t2)}
   .bar h1{flex:1 1 90px;font-size:13px}
   .jump{max-width:32vw}
 }
+
+/* ---- theme switcher ---- */
+.themes{display:flex;gap:2px;padding:2px;border:1px solid var(--divider);border-radius:999px;background:var(--bg-mute)}
+.themes .btn{border:0;background:transparent;height:26px;padding:0 9px}
+.themes .btn[aria-pressed=true]{background:var(--bg-elv);color:var(--brand-1);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+/* ---- A 杂志编辑风 ---- */
+[data-theme="a"] body{background-image:radial-gradient(ellipse at 20% -10%,rgba(169,52,31,.05),transparent 55%),radial-gradient(ellipse at 90% 0%,rgba(138,109,47,.06),transparent 50%)}
+[data-theme="a"] .hero h1{letter-spacing:.06em}
+[data-theme="a"] .hero .eyebrow{letter-spacing:.28em}
+[data-theme="a"] .hero .stat b{font-family:var(--serif)}
+[data-theme="a"] .sec-h{border-bottom:2px solid var(--t1)}
+[data-theme="a"] .card{border-radius:10px}
+[data-theme="a"] .intro::first-letter{font-family:var(--serif);font-size:1.9em;line-height:1;color:var(--brand-1);margin-right:2px}
+
+/* ---- B 极简现代风 ---- */
+[data-theme="b"] .hero h1{font-family:var(--font);font-weight:750;letter-spacing:-.03em}
+[data-theme="b"] .hero .eyebrow{letter-spacing:.14em;color:var(--t3)}
+[data-theme="b"] .hero .eyebrow::after{display:none}
+[data-theme="b"] .sec-h h2,[data-theme="b"] .chead h3{font-family:var(--font);font-weight:700;letter-spacing:-.02em}
+[data-theme="b"] .sec-h{border-bottom:1px solid var(--divider)}
+[data-theme="b"] .card{border-radius:14px}
+[data-theme="b"] .plain{font-family:var(--font);border-left-width:2px}
+[data-theme="b"] .hero .stat b{font-family:var(--font);font-weight:750}
+
+/* ---- C 深色金融风 ---- */
+[data-theme="c"] body{background-image:linear-gradient(rgba(56,89,140,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(56,89,140,.055) 1px,transparent 1px);background-size:44px 44px}
+[data-theme="c"] .hero{border:1px solid var(--divider);border-radius:14px;background:linear-gradient(180deg,var(--bg-elv) 0%,#0b111e 100%);padding:34px;margin-top:22px}
+[data-theme="c"] .hero h1{font-family:var(--font);font-weight:750;letter-spacing:-.02em}
+[data-theme="c"] .hero .stat b{font-family:var(--mono);font-variant-numeric:tabular-nums}
+[data-theme="c"] .card{background:var(--bg-elv);border-radius:10px}
+[data-theme="c"] .num{font-family:var(--mono)}
+[data-theme="c"] .plain{font-family:var(--font);border-left-color:var(--green-1)}
+[data-theme="c"] .toc{background:var(--bg-alt)}
+[data-theme="c"] .bar{background:var(--bg)}
+
 @media print{
   .bar,.toc,#top,.hero .stats{display:none}
   .hero{padding:0;max-width:none}
@@ -427,7 +505,7 @@ const jump=document.getElementById('jump');
 const fAll=document.getElementById('f-all');
 const fA=document.getElementById('f-a');
 const fP=document.getElementById('f-plain');
-const themeBtn=document.getElementById('theme');
+const themeBtns=[...document.querySelectorAll('[data-theme-opt]')];
 const topBtn=document.getElementById('top');
 let grade=null, plainOnly=false;
 
@@ -517,17 +595,24 @@ if(jump){
     if(el) el.scrollIntoView({block:'start'});
   });
 }
-themeBtn.onclick=()=>{
-  const cur=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
-  document.documentElement.setAttribute('data-theme',cur);
-  try{localStorage.setItem('htib-theme',cur);}catch(e){}
-};
+/* 主题切换：A 杂志 / B 极简 / C 深色。只改呈现，不改内容。
+   已保存的选择优先；无保存时，系统深色偏好用 C（深色主题）作 tie-breaker，否则默认 B。 */
+const THEME_COLORS={a:'#f6efe1',b:'#ffffff',c:'#070b12'};
+function setTheme(name){
+  if(!THEME_COLORS[name]) name='b';
+  document.documentElement.setAttribute('data-theme',name);
+  themeBtns.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeOpt===name)));
+  const mc=document.querySelector('meta[name="theme-color"]');
+  if(mc) mc.setAttribute('content',THEME_COLORS[name]);
+  try{localStorage.setItem('htib-theme',name);}catch(e){}
+}
+themeBtns.forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.themeOpt)));
 try{
-  const t=localStorage.getItem('htib-theme');
-  if(t) document.documentElement.setAttribute('data-theme',t);
-  else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)
-    document.documentElement.setAttribute('data-theme','dark');
-}catch(e){}
+  const saved=localStorage.getItem('htib-theme');
+  if(saved&&THEME_COLORS[saved]) setTheme(saved);
+  else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches) setTheme('c');
+  else setTheme('b');
+}catch(e){setTheme('b');}
 document.addEventListener('keydown',e=>{
   if(e.key==='/'&&document.activeElement!==q&&!/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)){
     e.preventDefault();q.focus();
@@ -605,11 +690,11 @@ def main():
 
     rev, rev_date = source_rev()
 
-    head = ('<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8">'
+    head = ('<!DOCTYPE html><html lang="zh-CN" data-theme="b"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
             '<meta name="color-scheme" content="light dark">'
-            '<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f3ec">'
-            '<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1e1a16">'
+            '<meta name="theme-color" content="#ffffff">'
+            '<script>try{var _t=localStorage.getItem("htib-theme");if(_t==="a"||_t==="b"||_t==="c"){document.documentElement.setAttribute("data-theme",_t);}else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","c");}}catch(e){}</script>'
             '<meta name="description" content="《高性价比投资指南》%s，共 %d 条投资中容易犯的错误，'
             '每条标注成本、代价、证据等级（A/B/C）与来源。单文件、零依赖、可离线阅读。仅供投资者教育，不构成投资建议。">'
             '<title>高性价比投资指南 · %s</title><style>%s</style></head><body>'
@@ -626,7 +711,10 @@ def main():
            '<input id="q" type="search" placeholder="搜索标题、说人话、收益…" autocomplete="off">'
            '<kbd>/</kbd></div>'
            '<span class="count" id="cnt">%d / %d 条</span>'
-           '<button class="btn" id="theme">明/暗</button></header>' % (
+           '<div class="themes" role="group" aria-label="主题切换">'
+           '<button class="btn" data-theme-opt="a" aria-pressed="false">A 杂志编辑风</button>'
+           '<button class="btn" data-theme-opt="b" aria-pressed="true">B 极简现代风</button>'
+           '<button class="btn" data-theme-opt="c" aria-pressed="false">C 深色金融风</button></div></header>' % (
                SCOPE, "".join(jump_opts), total, total))
 
     src_line = '内容来源：本仓库 book/ 中的原创整理，每条的「来源」栏列出所引用的报告、研究或投资者教育材料'
