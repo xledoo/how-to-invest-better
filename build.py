@@ -311,6 +311,10 @@ section{margin-bottom:52px}
 .sec-h{display:flex;align-items:baseline;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--t1);margin-bottom:6px}
 .sec-h h2{font-family:var(--serif);font-size:26px;font-weight:700;margin:0;letter-spacing:.01em}
 .sec-h .meta{font-size:12px;color:var(--t3);font-variant-numeric:tabular-nums;letter-spacing:.05em}
+/* 章节号：默认以 "1. " 纯文本呈现（A/C 与旧版一致）；B 主题改成带圈数字。 */
+.sec-h h2 .ch-num::after{content:". "}
+.toc .gt .ch-num::after{content:". "}
+.tools-b,.caps-b{display:none}
 .intro{color:var(--t2);font-size:15px;line-height:1.9;margin:16px 0 26px;padding-left:16px;border-left:2px solid var(--divider)}
 
 .card{background:var(--bg-elv);border:1px solid var(--divider);border-radius:14px;padding:22px 24px 18px;margin-bottom:16px;box-shadow:var(--shadow);transition:border-color .18s,transform .18s}
@@ -536,6 +540,54 @@ footer a{color:var(--t2)}
 [data-theme="b"] .plain{font-family:var(--font);border-left-width:2px}
 [data-theme="b"] .hero .stat b{font-family:var(--font);font-weight:750}
 
+/* ---- B: 整页按预览 B 重做（只影响 B 主题）----
+   老顶栏隐藏；左侧导航只剩 8 行章节（带圈数字 + 章名 + 5 条），不展开条目；
+   hero 移进主内容列，搜索 + 等级筛选放在 hero 下方；章节头带圈数字；卡片去阴影。 */
+[data-theme="b"] .bar{display:none}
+[data-theme="b"]{--side:288px}
+[data-theme="b"] .toc{background:var(--bg)}
+[data-theme="b"] .toc .grp{padding:0;margin:0 0 4px;border-bottom:0}
+[data-theme="b"] .toc .grp a.entry{display:none}
+[data-theme="b"] .toc .gt{display:flex;align-items:center;gap:12px;margin:0;padding:11px 12px;
+  border-radius:10px;font-family:var(--font);font-size:15px;font-weight:650;line-height:1.4;
+  letter-spacing:0;color:var(--t1)}
+[data-theme="b"] .toc .gt .ch-num{flex:none;width:32px;height:32px;border:1px solid var(--divider);
+  border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:600;color:var(--t2);font-variant-numeric:tabular-nums}
+[data-theme="b"] .toc .gt .ch-num::after{content:""}
+[data-theme="b"] .toc .gt .gt-name{flex:1;min-width:0}
+[data-theme="b"] .toc .gt small{margin-left:auto;flex:none;font-size:12.5px;color:var(--t3)}
+[data-theme="b"] .toc .gt:hover{background:var(--bg-mute);text-decoration:none}
+[data-theme="b"] .toc .gt.active{background:var(--bg-mute);color:var(--t1)}
+[data-theme="b"] .hero{max-width:none;margin:0;padding:48px 0 32px}
+[data-theme="b"] .tools-b{display:block}
+[data-theme="b"] .tools-b .search-b{position:relative;margin:26px 0 14px}
+[data-theme="b"] .tools-b .search-b svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  width:16px;height:16px;fill:none;stroke:var(--t3);stroke-width:2;pointer-events:none}
+[data-theme="b"] .tools-b .search-b input{width:100%;height:46px;padding:0 16px 0 42px;border-radius:12px;
+  border:1px solid var(--divider);background:var(--bg-elv);color:var(--t1);font:inherit;font-size:14px}
+[data-theme="b"] .tools-b .search-b input:focus{outline:0;border-color:var(--brand-1);box-shadow:0 0 0 3px var(--brand-soft)}
+[data-theme="b"] .tools-b .filters-b{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+[data-theme="b"] .tools-b .fbtn{min-height:36px;padding:8px 16px;font-size:13.5px}
+[data-theme="b"] .tools-b .fbtn[aria-pressed="true"]{background:var(--t1);color:var(--bg);border-color:var(--t1)}
+[data-theme="b"] .tools-b .count{margin-left:auto}
+[data-theme="b"] .themes-b{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:22px;
+  padding-top:16px;border-top:1px solid var(--divider-soft);font-size:12.5px;color:var(--t3)}
+[data-theme="b"] .themes-b .btn{min-height:28px;padding:4px 10px;font-size:12px}
+[data-theme="b"] .themes-b .btn[aria-pressed="true"]{background:var(--bg-mute);color:var(--brand-1);border-color:var(--divider)}
+[data-theme="b"] .sec-h h2{display:flex;align-items:center;gap:12px;font-size:20px}
+[data-theme="b"] .sec-h h2 .ch-num{flex:none;width:36px;height:36px;border:1px solid var(--divider);
+  border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:600;color:var(--t2)}
+[data-theme="b"] .sec-h h2 .ch-num::after{content:""}
+[data-theme="b"] .card{box-shadow:none}
+@media (max-width:1080px){
+  [data-theme="b"] .caps-b{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  [data-theme="b"] .caps-b a{border:1px solid var(--divider);border-radius:999px;padding:8px 14px;
+    font-size:13px;color:var(--t1);background:var(--bg-elv)}
+  [data-theme="b"] .caps-b a:hover{border-color:var(--brand-1);color:var(--brand-1);text-decoration:none}
+}
+
 /* ================= C 深色金融风 =================
    Matches preview C: status bar, KPI dashboard hero (2x2 KPI cards with
    spark bars), chapter ticker, grade-distribution bar, 8-chapter index
@@ -720,7 +772,9 @@ const cards=[...document.querySelectorAll('.card')];
 const secs=[...document.querySelectorAll('section')];
 const bar=document.querySelector('.bar');
 const q=document.getElementById('q');
+const q2=document.getElementById('q2');
 const cnt=document.getElementById('cnt');
+const cnt2=document.getElementById('cnt2');
 const jump=document.getElementById('jump');
 const fAll=document.getElementById('f-all');
 const fA=document.getElementById('f-a');
@@ -788,25 +842,42 @@ function apply(){
   });
   document.getElementById('empty').classList.toggle('hidden',shown>0);
   cnt.textContent=shown+' / '+cards.length+' 条';
-  if(term) markAll(document.querySelector('main'),term);
+  if(cnt2) cnt2.textContent=shown+' / '+cards.length+' 条';
+  if(term) document.querySelectorAll('main section').forEach(s=>markAll(s,term));
   document.querySelectorAll('.toc a').forEach(a=>{
     const el=document.getElementById(a.getAttribute('href').slice(1));
     a.classList.toggle('hidden',!el||el.classList.contains('hidden'));
   });
 }
 let timer=null;
-q.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(apply,90);});
+function onSearch(src){
+  const other=(src===q)?q2:q;
+  if(other&&other.value!==src.value) other.value=src.value;
+  clearTimeout(timer);timer=setTimeout(apply,90);
+}
+q.addEventListener('input',()=>onSearch(q));
+if(q2) q2.addEventListener('input',()=>onSearch(q2));
+const fB2=document.getElementById('f-b2');
+const fC2=document.getElementById('f-c2');
+const fAll2=document.getElementById('f-all2');
+const fA2=document.getElementById('f-a2');
+const fP2=document.getElementById('f-plain2');
 function setMode(mode){
-  grade=(mode==='A')?'A':null;
+  grade=(mode==='A'||mode==='B'||mode==='C')?mode:null;
   plainOnly=(mode==='plain');
   document.body.classList.toggle('plain-only',plainOnly);
-  const map={'all':fAll,'A':fA,'plain':fP};
-  Object.keys(map).forEach(k=>map[k].setAttribute('aria-pressed',String(k===mode)));
+  const map={'all':[fAll,fAll2],'A':[fA,fA2],'B':[fB2],'C':[fC2],'plain':[fP,fP2]};
+  Object.keys(map).forEach(k=>map[k].forEach(b=>{if(b) b.setAttribute('aria-pressed',String(k===mode));}));
   apply();
 }
 fAll.onclick=()=>setMode('all');
 fA.onclick=()=>setMode('A');
 fP.onclick=()=>setMode('plain');
+if(fAll2) fAll2.onclick=()=>setMode('all');
+if(fA2) fA2.onclick=()=>setMode('A');
+if(fB2) fB2.onclick=()=>setMode('B');
+if(fC2) fC2.onclick=()=>setMode('C');
+if(fP2) fP2.onclick=()=>setMode('plain');
 fAll.setAttribute('aria-pressed','true');
 
 if(jump){
@@ -821,6 +892,7 @@ const THEME_COLORS={a:'#f6efe1',b:'#ffffff',c:'#070b12'};
 function setTheme(name){
   if(!THEME_COLORS[name]) name='b';
   document.documentElement.setAttribute('data-theme',name);
+  requestAnimationFrame(syncBar);
   themeBtns.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeOpt===name)));
   const mc=document.querySelector('meta[name="theme-color"]');
   if(mc) mc.setAttribute('content',THEME_COLORS[name]);
@@ -834,10 +906,11 @@ try{
   else setTheme('b');
 }catch(e){setTheme('b');}
 document.addEventListener('keydown',e=>{
-  if(e.key==='/'&&document.activeElement!==q&&!/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)){
-    e.preventDefault();q.focus();
+  const qs=(document.documentElement.getAttribute('data-theme')==='b'&&q2)?q2:q;
+  if(e.key==='/'&&document.activeElement!==qs&&!/^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)){
+    e.preventDefault();qs.focus();
   }
-  if(e.key==='Escape'&&document.activeElement===q){q.value='';apply();q.blur();}
+  if(e.key==='Escape'&&document.activeElement===qs){q.value='';if(q2)q2.value='';apply();qs.blur();}
 });
 topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
 /* 滚动状态：① 顶栏收起（手机）② 回到顶部按钮出现。
@@ -859,12 +932,20 @@ if(document.fonts&&document.fonts.ready) document.fonts.ready.then(syncBar);
 syncBar();
 
 const links=[...document.querySelectorAll('.toc a')];
+function setActiveGt(secId){
+  if(document.documentElement.getAttribute('data-theme')!=='b') return;
+  document.querySelectorAll('.toc .gt').forEach(g=>g.classList.toggle('active',g.getAttribute('href')==='#'+secId));
+}
 const io=new IntersectionObserver(es=>{
   es.forEach(e=>{ if(e.isIntersecting){
-    if(e.target.classList.contains('card'))
+    if(e.target.classList.contains('card')){
       links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
-    else if(jump && e.target.tagName==='SECTION')
-      jump.value=e.target.id;
+      const sec=e.target.closest('section');
+      if(sec) setActiveGt(sec.id);
+    } else if(e.target.tagName==='SECTION'){
+      if(jump) jump.value=e.target.id;
+      setActiveGt(e.target.id);
+    }
   }});
 },{rootMargin:'-70px 0px -75% 0px'});
 cards.forEach(c=>io.observe(c));
@@ -884,6 +965,8 @@ def main():
     for n in SECTIONS:
         p = find_file(n)
         title, intro, entries = parse(p)
+        _m = re.match(r"^(\d+)\.\s*(.*)$", title)
+        _num, _name = (int(_m.group(1)), _m.group(2)) if _m else (n, title)
         cards = []
         links = []
         for e in entries:
@@ -895,16 +978,16 @@ def main():
             cards.append(render_entry(e, n))
             r = ratio_of(parse_tags(e["tags_raw"]))
             short = e["title"] if len(e["title"]) <= 34 else e["title"][:33] + "…"
-            links.append('<a href="#s%d-%d" title="%s"><span class="dot d%d"></span>'
+            links.append('<a class="entry" href="#s%d-%d" title="%s"><span class="dot d%d"></span>'
                          '<i>%d</i><span>%s</span></a>'
                          % (n, e["no"], html.escape(e["title"], quote=True),
                             RATIO_ORDER.get(r, 2), e["no"], html.escape(short)))
-        sec_toc.append('<div class="grp"><div class="gt">%s<small>%d 条</small></div>%s</div>'
-                       % (inline(title), len(entries), "".join(links)))
+        sec_toc.append('<div class="grp"><a class="gt" href="#sec%d"><span class="ch-num">%d</span><span class="gt-name">%s</span><small>%d 条</small></a>%s</div>'
+                       % (n, _num, inline(_name), len(entries), "".join(links)))
         sec_html.append(
-            '<section id="sec%d"><div class="sec-h"><span class="sec-no">/ %02d</span><h2>%s</h2>'
+            '<section id="sec%d"><div class="sec-h"><span class="sec-no">/ %02d</span><h2><span class="ch-num">%d</span><span class="ch-name">%s</span></h2>'
             '<span class="meta">%d 条</span></div>%s<div class="cards">%s</div></section>'
-            % (n, n, inline(title), len(entries),
+            % (n, n, _num, inline(_name), len(entries),
                ('<p class="intro">%s</p>' % inline(" ".join(intro))) if intro else "",
                "".join(cards)))
         jump_opts.append('<option value="sec%d">%s</option>' % (n, html.escape(title)))
@@ -1094,15 +1177,37 @@ def main():
                 '<div><b>%d</b><span>A 级证据</span></div></div>'
                 '<div class="nav-label">目录 — 全书 %d 节</div>'
                 % (len(SECTIONS), total, grade_cnt["A"], len(SECTIONS)))
-    shell = ('<div class="shell"><aside class="toc">%s</aside><main>%s'
+    # --- B 极简现代风: hero 下方的工具区（搜索 + 等级筛选 + 手机胶囊导航 + 主题切换）。
+    # 只在 B 主题下显示；A/C 的搜索/筛选仍在顶栏里，不受影响。 ---
+    caps_b = "".join('<a href="#sec%d">%s</a>'
+                     % (c["n"], html.escape(re.sub(r"^\d+\.\s*", "", c["title"])))
+                     for c in chapters)
+    tools_b = ('<div class="tools-b">'
+               '<div class="search-b"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/>'
+               '<path d="M20 20l-3.5-3.5"/></svg>'
+               '<input id="q2" type="search" placeholder="搜索错误、关键词… 例如：费率 / 杠杆 / 追涨" autocomplete="off"></div>'
+               '<div class="filters-b" role="group" aria-label="等级筛选">'
+               '<button class="btn fbtn" id="f-all2" aria-pressed="true">全部等级</button>'
+               '<button class="btn fbtn" id="f-a2" aria-pressed="false">只看 A 级</button>'
+               '<button class="btn fbtn" id="f-b2" aria-pressed="false">B 级</button>'
+               '<button class="btn fbtn" id="f-c2" aria-pressed="false">C 级</button>'
+               '<button class="btn fbtn" id="f-plain2" aria-pressed="false">只看说人话</button>'
+               '<span class="count" id="cnt2">%d / %d 条</span></div>'
+               '<nav class="caps-b" aria-label="章节导航">%s</nav>'
+               '<div class="themes-b" role="group" aria-label="主题切换"><span>主题切换</span>'
+               '<button class="btn" data-theme-opt="a" aria-pressed="false">A 杂志编辑风</button>'
+               '<button class="btn" data-theme-opt="b" aria-pressed="true">B 极简现代风</button>'
+               '<button class="btn" data-theme-opt="c" aria-pressed="false">C 深色金融风</button></div></div>'
+               % (total, total, caps_b))
+    shell = ('<div class="shell"><aside class="toc">%s</aside><main>%s%s'
              '<div class="empty hidden" id="empty">没有匹配的条目</div>%s'
              '</main></div>'
              '<button id="top" title="回到顶部" aria-label="回到顶部">↑</button>'
-             % (toc_head + "".join(sec_toc), "".join(sec_html), footer))
+             % (toc_head + "".join(sec_toc), hero + tools_b, "".join(sec_html), footer))
 
     # 注意：JS 字符串只含脚本体，<script> 开合标签在这里拼。
     # 之前漏了开标签，导致整段 JS 被当纯文本渲染在页面底部、脚本从未执行。
-    out = head + bar + masthead + cover + hero + statusbar_c + hero_c + dash + toc_mag + feature + shell + "<script>" + JS + "</script></body></html>"
+    out = head + bar + masthead + cover + statusbar_c + hero_c + dash + toc_mag + feature + shell + "<script>" + JS + "</script></body></html>"
 
     if ARGS.out:
         name = Path(ARGS.out)
