@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """把《高性价比投资指南》指定的节，渲染成一个自包含的单文件 HTML 阅读页。
 
-源文件在同仓库的 book/ 目录下，每章一个 Markdown 文件，格式与原项目 cdyforever/how-to-live-better 的 build.py 相同。
+源文件在同仓库的 book/ 目录下，每章一个 Markdown 文件，条目格式沿用 eternity4719/HowToLiveBetter 的写法（成本标签与成本 / 说人话 / 收益 / 证据等级 / 来源 / 备注六个字段），单文件渲染方式参考 cdyforever/how-to-live-better。
 
 用法：
     python build.py                      # 默认第 1、2、16 节
@@ -1053,8 +1053,8 @@ def main():
                SCOPE, "".join(jump_opts), total, total))
 
     src_line = '内容来源：本仓库 book/ 中的原创整理，每条的「来源」栏列出所引用的报告、研究或投资者教育材料'
-    src_line += '；结构与渲染方式对标 <a href="https://github.com/cdyforever/how-to-live-better" target="_blank" rel="noopener">cdyforever/how-to-live-better</a>'
-    src_line += '（Unlicense，公有领域）。本书内容仅供投资者教育，不构成投资建议'
+    src_line += '；内容与证据标准对标 <a href="https://github.com/eternity4719/HowToLiveBetter" target="_blank" rel="noopener">eternity4719/HowToLiveBetter</a>'
+    src_line += '（内容 CC BY 4.0，代码 MIT），单文件渲染方式参考 cdyforever/how-to-live-better。本书内容仅供投资者教育，不构成投资建议'
     if rev:
         src_line += '，数据截至 <span style="font-family:var(--mono)">%s</span>%s' % (
             rev, '（%s）' % rev_date if rev_date else '')
